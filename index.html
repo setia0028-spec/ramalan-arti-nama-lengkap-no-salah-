@@ -1,168 +1,561 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Ramalan Arti Nama</title>
-    
+    <title>Analisis Numerologi Terpadu - Lengkap</title>
     <style>
+        /* GLOBAL STYLES - MIRIP CSS ANDA */
         body {
-            font-family: Arial, sans-serif;
+            font: 15px/1.5 Arial, Helvetica, sans-serif;
+            padding: 0;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        ul {
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
         }
-        .container {
-            width: 85%;
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: green;
-        }
-        .description {
-            text-align: justify;
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 20px;
-        }
-        .input-section {
-            margin: 20px 0;
-            text-align: center;
-            color: green;
-        }
-        .input-section label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 10px;
-        }
-        .input-section input[type="text"] {
-            width: 100%;
-            max-width: 500px;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            max-lenght: 50px;
-        }
-        .input-section button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: green;
-            color: white;
-            border: none;
-            border-radius: 4px;
+
+        .button_1 {
+            height: 45px;
+            background: #2e7d32;
+            border: 0;
+            padding: 0 25px;
+            color: #ffffff;
             cursor: pointer;
-            align: center;
-        }
-        .input-section button:hover {
-            background-color: darkgreen;
-            button-align: center;
-        }
-        .name-output {
-            margin-top: 20px;
-            font-size: 20px;
             font-weight: bold;
-            color: #333;
+            border-radius: 3px;
+            transition: background 0.3s;
+        }
+
+        .button_1:hover {
+            background: #1b5e20;
+        }
+
+        .dark {
+            padding: 20px;
+            background: #35424a;
+            color: #ffffff;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        /* PERBAIKAN KHUSUS UNTUK .tab-res DI DALAM .dark */
+        .dark .tab-res {
+            background: rgba(255, 255, 255, 0.15) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            color: #ffffff !important;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .dark .tab-res strong {
+            color: #ffffff !important;
+        }
+
+        .dark .tab-res b {
+            color: #ffffff !important;
+        }
+
+        .dark .tab-res i {
+            color: #e0e0e0 !important;
+        }
+
+        /* HEADER STYLE */
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding-top: 20px;
+            min-height: 60px;
+            border-bottom: #2e7d32 3px solid;
+        }
+
+        header h1 {
+            margin: 0;
+            padding: 10px 0;
             text-align: center;
+            font-size: 24px;
         }
-        .name-output span {
-            color: red;
+
+        /* MAIN CONTENT */
+        .main-content {
+            margin-top: 30px;
+            margin-bottom: 30px;
         }
-        .tips {
-            text-align: justify;
-            font-size: 14px;
-            color: #555;
+
+        /* INPUT SECTION */
+        .input-section {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .input-group {
             margin-bottom: 20px;
         }
-        .tips .note {
-            font-style: italic;
-            color: #777;
+
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #35424a;
         }
-        .result-section {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        /* RESULTS GRID - SIMPLE */
+        .results-grid {
+            display: block;
+        }
+
+        .result-card {
+            background: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            color: #35424a;
+            border-bottom: #2e7d32 2px solid;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        /* SEGITIGA HARANI - SIMPLE */
+        #triangle {
             text-align: center;
-            hitungpersen: green;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
         }
-        .result-section h2 {
-            margin-top: 0;
-            color: #333;
+
+        .triangle-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5px;
         }
-        .result-section .angka-item {
-            margin: 5px 0;
+
+        .triangle-node {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border: 1px solid #ddd;
+            margin: 0 2px;
+            font-size: 14px;
+            border-radius: 50%;
+        }
+
+        .triangle-node.result {
+            background: #ffd600;
+            font-weight: bold;
+            border-color: #f57f17;
+        }
+
+        /* ANGKA ITEMS */
+        .angka-item {
+            margin: 8px 0;
+            padding: 8px 0;
+            border-bottom: 1px dotted #ddd;
             font-size: 14px;
         }
-        .final-result {background: #e3f2fd; padding: 20px; margin-top: 30px;}
+
+        yelow {
+            color: #8b6b00;
+            font-weight: bold;
+            background: #fff9c4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+
+        /* HARANI BOX */
+        .harani-box {
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 4px solid #ddd;
+        }
+
+        .bg-positif {
+            background: #e8f5e9;
+            border-left-color: #4caf50;
+        }
+
+        .bg-negatif {
+            background: #ffebee;
+            border-left-color: #f44336;
+        }
+
+        .bg-neutral {
+            background: #f5f5f5;
+            border-left-color: #9e9e9e;
+        }
+
+        /* TABEL RESULT */
+        .tab-res {
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            margin-top: 15px;
+            border: 1px solid #ddd;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 15px;
+            margin: 15px 0;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        /* SUMMARY BOX */
+        .summary-box {
+            padding: 25px;
+            background: #e3f2fd;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: 1px solid #2196f3;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 20px;
+            margin-top: 30px;
+            color: #ffffff;
+            background-color: #35424a;
+            text-align: center;
+            border-top: #2e7d32 3px solid;
+        }
+
+        /* POSITIVE/NEGATIVE COLORS */
+        .positif {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .negatif {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+
+        .neutral {
+            color: #616161;
+            font-weight: bold;
+        }
+
+        /* MEDIA QUERIES - RESPONSIVE */
+@media(min-width: 768px) {
+            .container {
+                width: 85%;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+
+            .input-section {
+                padding: 30px;
+            }
+
+            .results-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .full-width {
+                grid-column: 1 / -1;
+            }
+
+            .triangle-node {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .triangle-node.result {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+@media(min-width: 1024px) {
+            .container {
+                width: 80%;
+            }
+
+            .results-grid {
+                gap: 25px;
+            }
+
+            .result-card {
+                padding: 25px;
+            }
+        }
+
+@media(max-width: 767px) {
+            .container {
+                width: 95%;
+            }
+
+            .input-section {
+                padding: 20px;
+            }
+
+            .result-card {
+                padding: 15px;
+            }
+
+            .triangle-node {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+            }
+
+            .triangle-node.result {
+                width: 35px;
+                height: 35px;
+            }
+
+            .section-title {
+                font-size: 16px;
+            }
+        }
+
+        /* PRINT STYLES */
+@media print {
+            .input-section,
+            button {
+                display: none;
+            }
+
+            .result-card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+        /* PERBAIKAN UNTUK OUTPUT STYLING */
+        .persen-hasil {
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 8px;
+            padding: 4px 10px;
+            background: #e8f5e9;
+            border-radius: 3px;
+        }
+
+        /* SUMMARY BOX STYLING */
+        .summary-box {
+            flex: 1;
+            min-width: 140px;
+            padding: 15px;
+            background: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .summary-label {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .summary-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        .summary-sub {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* KESELARASAN BOX */
+        .keselarasan-box {
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 5px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-top: 5px solid;
+            text-align: center;
+        }
+
+        .keselarasan-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .keselarasan-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .keselarasan-status {
+            margin-top: 10px;
+            padding: 6px 20px;
+            color: white;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* TIMESTAMP */
+        .timestamp {
+            color: #666;
+            font-size: 0.8rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        /* MEDIA QUERIES UNTUK OUTPUT */
+@media(min-width: 768px) {
+            .summary-value {
+                font-size: 1.8rem;
+            }
+
+            .keselarasan-value {
+                font-size: 3rem;
+            }
+        }
+
+@media(max-width: 480px) {
+            .summary-box {
+                min-width: 100px;
+                padding: 10px;
+            }
+
+            .summary-value {
+                font-size: 1.3rem;
+            }
+
+            .keselarasan-value {
+                font-size: 2rem;
+            }
+
+            .keselarasan-status {
+                font-size: 0.8rem;
+                padding: 5px 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 1. Judul -->
-        <h1>ARTI NAMA</h1>
-
-        <!-- 2. Penjelasan -->
-        <div class="description">
-            Arti nama yang baik akan memberikan pengaruh yang baik. Bahkan oleh Nabi kita dianjurkan untuk memberikan nama-nama yang baik. 
-            Nama yang baik akan memberikan pengaruh yang baik untuk kehidupan kita. Arti Nama ini menggunakan metode pythagoras 
-            dan sifatnya sebagai rujukan karena segala ketentuan berpulang pada Tuhan. Aplikasi ini juga bisa digunakan sebagai rujukan 
-            membuat nama perusahaan, merek, nama domain, dll.
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <h1>KALKULATOR NUMEROLOGI TERPADU</h1>
         </div>
+    </header>
 
-        <!-- 3. Masukan Nama -->
+    <!-- MAIN CONTENT -->
+    <div class="container main-content">
+        <!-- INPUT SECTION -->
         <div class="input-section">
-            <label for="name">Masukkan Nama Anda:</label>
-            <input type="text" id="name" placeholder="Contoh: Dwi Yulianto Ghazali">
-            <!-- 4 & 5. Tombol proses tepat di tengah bawah -->
-        </div>
-        <div class="input-section button">
-            <button onclick="hitungNumerologi()">Proses</button>
-        </div>
-        
-        <!-- 6. Hasil proses -->
-        <div id="result" class="name-output"></div>
+            <div class="input-group">
+                <label>Nama Lengkap:</label>
+                <input type="text" id="nama" placeholder="Masukkan nama lengkap sesuai KTP...">
+            </div>
 
-        <!-- 7. Hasil Numerologi -->
-        <div id="numerologi-result" class="result-section"></div>
+            <div class="input-group">
+                <label>Tanggal Lahir:</label>
+                <input type="date" id="birthDate">
+            </div>
 
-        <!-- 8. Penjelasan -->
-        <div class="tips">
-            <h2>Tips Merangkai Arti Nama yang Positif:</h2>
-            <ul>
-                <li>Misalkan Anda memilih nama: "arifin suwarno".</li>
-                <li>Lihat arti nama "arifin suwarno". Jika arti nama tersebut positif semua maka lanjutkan langkah ke 2 berikut ini.</li>
-                <li>Lihat nama "arifin", jika artinya positif semua lanjutkan ke langkah ke 3.</li>
-                <li>Lihat nama "suwarno", jika artinya positif semua maka Anda bisa pakai nama tersebut.</li>
-            </ul>
-            <p class="note">
-                Catatan:
-                <ul>
-                    <li>Tidak mudah mendapatkan arti nama yang 100% positif. Namun paling tidak, arti nama Anda didominasi oleh arti yang positif atau usahakan memiliki kadar POSITIF minimal 65%.</li>
-                    <li>Jika nama Anda didominasi oleh arti yang kurang baik maka Anda mungkin bisa merubah nama panggilannya saja dibanding mengganti keseluruhan nama.</li>
-                    <li>Arti yang kurang baik juga bisa dihindari agar tidak menjadi kenyataan dengan melakukan banyak amal baik/sedekah kepada kaum dhuafa.</li>
-                    <li>Pada sebelah kiri arti nama terdapat angka yang didapat dari metode pythagoras ini. Abaikan saja jika Anda bingung karena nilai ini merupakan bukti bahwa tiap huruf pada nama dihitung secara detail.</li>
-                    <li>Jika nama Anda sudah memiliki arti nama yang positif maka langkah selanjutnya adalah memeriksa apakah nama tersebut sudah sinkron dengan tanggal kelahiran Anda atau belum. Silahkan klik menu.</li>
-                </ul>
-            </p>
+            <button class="button_1" onclick="hitungSemua()" style="width:100%; font-size:16px; padding:12px;">
+                ANALYZE SEKARANG - SEMUA ANALISIS
+            </button>
+        </div>
+
+        <!-- RESULTS SECTION -->
+        <div id="hasil-section" style="display:none;">
+            <div class="results-grid">
+                <!-- KOLOM KIRI -->
+                <div>
+                    <div class="result-card">
+                        <h3 class="section-title">I. Analisis Pythagoras Original</h3>
+                        <div id="pythagoras-original-result"></div>
+                    </div>
+
+                    <div class="result-card">
+                        <h3 class="section-title">II. Analisis Harani (Segitiga Inverted)</h3>
+                        <div id="triangle"></div>
+                        <div id="harani-result"></div>
+                    </div>
+                </div>
+
+                <!-- KOLOM KANAN -->
+                <div>
+                    <div class="result-card">
+                        <h3 class="section-title">III. Tabel Kecocokan Nama & Tanggal Lahir</h3>
+                        <div id="tabel-kecocokan-result"></div>
+                    </div>
+
+                    <div class="result-card full-width">
+                        <div class="summary-box">
+                            <h3 class="section-title">IV. Keselarasan & Ringkasan Terpadu</h3>
+                            <div id="final-summary"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>
+                Analisis Numerologi Terpadu &copy; 2024
+            </p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT (SAMA DENGAN SEBELUMNYA) -->
     <script>
+        // ===============================
+        // 1. DATABASE UTAMA
+        // ===============================
+
         const ARTINYA = {
-            1: 'Ambisius/gemar/bernafsu mengejar kehormatan',
+            1: 'Ambisius/gemar mengejar kehormatan',
             2: 'Kerusakan, kebinasaan dan kematian',
-            3: 'Spiritual, mistik, kepercayaan pada hal gaib',
+            3: 'Spiritual, mistik, kepercayaan gaib',
             4: 'Keteguhan, kebijaksanaan, pengaruh dan kekuasaan',
             5: 'Kebahagiaan, kehormatan dan pernikahan',
             6: 'Pekerjaan yang sempurna',
@@ -183,7 +576,7 @@
             21: 'Kebijaksanaan, penciptaan dan kegaiban',
             22: 'Hukuman, pembalasan Tuhan, suatu hukuman Melakukan perbuatan yang melangar norma',
             23: 'Kurang memiliki pengetahuan agama',
-            24: ' Suatu perjalanan melancong',
+            24: 'Suatu perjalanan melancong',
             25: 'Kecerdasan pemikiran dan sebuah kelahiran',
             26: 'Tanda alamat baik dan berfaedah',
             27: 'Gagah dan tabah',
@@ -238,181 +631,516 @@
             1390: 'Pengejaran dan pendakwaan'
         };
 
-        const ANGKA_POSITIF = new Set([1,3,4,5,6,7,8,10,12,15,16,21,25,26,27,28,30,35,36,37,40,43,44,46,47,50,70,75,77,80,81,100,120,300,318,350,500,600,700,800,1000]);
-          const ANGKA_NEGATIF = new Set([2,9,11,13,14,17,18,19,20,23,34,38,41,42,45,49,60,90,200,215,400,666,900,1260,390]);
-        
+        const ANGKA_POSITIF = new Set([1, 3, 4, 5, 6, 7, 8, 10, 12, 15, 16, 21, 25, 26, 27, 28, 30, 31, 32, 35, 36, 37, 40, 43, 44, 46, 47, 50, 70, 75, 77, 80, 81, 100, 120, 300, 318, 350, 500, 600, 700, 800, 1000]);
+        const ANGKA_NEGATIF = new Set([2, 9, 11, 13, 14, 17, 18, 19, 20, 23, 34, 38, 41, 42, 45, 49, 60, 90, 200, 215, 400, 666, 900, 1260, 1390]);
+
         const NILAI_HURUF = {
-            'A':1, 'B':2, 'C':3, 'D':4, 'E':5, 'F':6, 'G':7, 'H':8, 'I':9,
-            'J':600, 'K':10, 'L':20, 'M':30, 'N':40, 'O':50, 'P':60, 'Q':70,
-            'R':80, 'S':90, 'T':100, 'U':200, 'V':700, 'W':1400, 'X':300,
-            'Y':400, 'Z':500
+            'A': 1,
+            'B': 2,
+            'C': 3,
+            'D': 4,
+            'E': 5,
+            'F': 6,
+            'G': 7,
+            'H': 8,
+            'I': 9,
+            'J': 600,
+            'K': 10,
+            'L': 20,
+            'M': 30,
+            'N': 40,
+            'O': 50,
+            'P': 60,
+            'Q': 70,
+            'R': 80,
+            'S': 90,
+            'T': 100,
+            'U': 200,
+            'V': 700,
+            'W': 1400,
+            'X': 300,
+            'Y': 400,
+            'Z': 500
         };
 
-        function hitungNumerologi() {
-            const nama = document.getElementById('name').value.toUpperCase().trim();
-            if (!nama) return alert("Masukkan nama!");
-            
-            const namaParts = nama.split(' ');
-            let output = [];
-            let allAngka = new Set();
+        const HARANI_TEXT = {
+            1: 'HARANI 1 : Dalam fase pendek adalah permulaan baru, biasanya diawali oleh suatu proyek - proyek utama, suatu relokasi, perubahan karir, atau langkah penting serupa. Kemandiran dan kekuatan, kemungkinan menjadi seorang yang cenderung individual. Berpotensi memiliki kewenangan / perlawanan terhadap figur yang mendominasi. Akan ada banyak peluang - peluang bisnis menguntungkan untuk pribadi tetapi tidak menguntungkan jika dikerjakan dalam bentuk kerjasama. Akan banyak potensi keberuntungan dalam keuangan serta petualangan - petualangan. anda berpotensi menerima bantuan dan dukungan dari beberapa sumber, Dalam fase panjang Anda akan mantap dalam keuangan, kuat, dan sukses bisnis',
+            2: 'HARANI 2 : Dalam fase pendek berpotensi memiliki koneksi - koneksi baru dalam bisnis atau pergaulan, meningkatnya kesadaran akan rasa syukur terhadap kehidupan , meningkatnya kepekaan terhadap insting kehidupan dan bisnis, memiliki kemauan untuk bermitra dengan orang lain, mudah bernegosiasi dan bijaksana, Dalam fase panjang Dalam fase panjang lancar dalam hubungan, juga berpotensi sukses, lancarnya keuangan dan perekonomian,',
+            3: 'HARANI 3 : Dalam fase pendek berpotensi memiliki AKSI kreativitas dan orisinalitas, meningkatnya ekpresi diri. Ini adalah Modal. Penuh inspirasi dan motivasi serta ide-ide kehidupan. Ketika bersosialisasi, anda akan membawa kenyamanan, Berpotensi mengalami hidup yang penuh dengan perjalanan dan menginspirasi orang lain. Akan meningkatnya kesenangan - kesenangan lain dari aspek material dunia/ Uang, Dalam fase panjang anda berpotensi mengalami pergerakan dalam gaya hidup dan aksi, Anda menemukan jaringan bisnis baru, dan menjadi lebih menghargai kehidupan yang sederhana, Jika kreativitas anda dipertinggi maka kemampuan anda dalam tim sangatlah kuat',
+            4: 'HARANI 4 : Dalam fase pendek berpotensi mendapatkan peluang - peluang bisnis yang menjanjikan, Hilangnya Kesulitan - kesulitan dengan pihak berwenang, Khususnya institusi - institusi serta peraturannya, Keuangan yang grafiknya naik, Kekuatan dan tekadlah dapat membantu anda mewujudkan rencana - rencana anda, Dalam fase panjang anda berpotensi mengalami perbaikan - perbaikan dalam karir dan keuangan, Anda juga bisa berharap adanya hubungan yang menguat, khususnya terhadap seseorang yang dekat dengan anda',
+            5: 'HARANI 5 : ini adalah harani yang paling jelek dari semua harani di atas,semua apes dan kejelekan di harani sebelumnya ada di harani ini,maka hati hati klu ada yg harani 5,mau tidak mau,suka tdk suka, Adanya bahaya di masalah - masalah kepercayaan, Cenderung ada pikiran untuk menipu kekasih anda karena tergoda, Jika anda jatuh dalam jebakan, anda bepotensi kehilangan segalanya yang anda anggap sangat berarti, Namanya harus di rubah atau di tambahkan, Mudah di tipu orang,mati krn penyakit kronis,Mati karena di racun dan yang meracun tidak akan pernah terdeteksi,mati karena kecelakaan,dihianati oleh teman sendiri,dan puncaknya adalah berpotensi akan mati di bunuh oleh Kawan bukan Lawan ( pacar sendiri,saudara sendiri), Harani ini adalah angka yang bisa dikatakan paling parah dari semua angka Ending Code yang ada, berpotensi sering mengalami kesialan dan keburukan, rata - rata hal negatif yang terjadi dalam parameter ending code yang lain terjadi juga di angka Harani ini. maka sebaiknya berhati - hatilah jika nama anda mengandung Ending Code. selain itu berpotensi mudah ditipu orang, dihianati oleh teman sendiri, dan lainnya',
+            6: 'HARANI 6 : Dalam fase pendek ada peluang untuk melibatkan diri dalam keluarga, menyenangkan dan membantu berbagai macam generasi, Berpotensi mengalami ketertarikan dalam masalah - masalah lingkungan dan politik dan juga berpotensi membuat anda menjadi seseorang yang lebih bertanggung jawab, Dalam fase panjang berpotensi mendapatkan prospek - prospek yang kelihatannya amat baik, Di semua area kehidupan anda berpotensi mengalami perbaikan, kesembuhan dan kemajuan',
+            7: 'HARANI 7 : Fase pendek : dalam kehidupan akan mengalami kesulitan dalam mengalokasikan dan,mengalami masalah keuangan, HARANI 7 : Fase panjang : Berpotensi besar menderita kanker dan tumor dan berpotensi juga mati di bunuh karena konflik Emosional (contoh cinta segitiga)',
+            8: 'HARANI 8 : Potensi 1 : potensi Dominan akan mengalami Kematian karena kecelakaan tragis ( Contoh : Ustad Jeffry dan kecelakaan pesawat Sukhoi di gunung Salak,krena Pilot,copilot,Pramugari dan sebagian besar penumpangnya ber Harani 8) HARANI 8 : potensi ke 2 : Menderita Penyakit yang berat dalam waktu lama ( Stroke,jantung,liver,kanker dll) HARANI 8 : potensi yg 3: Potonsi mati Bunuh diri,karena Gantung diri',
+            9: 'HARANI 9 : Fase pendek : Mengalami kegagalan dalam pengeloalaan Keuangan HARANI 9 : Fase Panjang : akan mengalami kematian karena di bunuh oleh lawannya dan akan mati bunuh diri karena minum sesuatu atau memasukkan sesuatu kedalam tubuhnya (Narkoba),juga akan mengalami Penyakit menular yang mematikan (AIDS,SARS,EBOLA dll) kalau sinchronicity dan coherence nya sangat Rendah',
+            11: 'HARANI 11 : Fase Pendek : Akan mengalami kegagalan dan kebangkrutan dalam Usaha,dan sering menjadi kambing hitam dalam setiap peristiwa HARANI 11 : Fase Panjang : akan mengalami Penghianatan Psikologis dari teman dekat,mati di bunuh karena berbeda keyakinan,Mati terbunuh karena situasi,yang akhirnya menyebabkan dia terbunuh ( Contoh : Pencuri yg kepergok tanpa sebgaja oleh orang dan untuk menghilangkan saksi dan jejak,terpakasa orang tsb harus di bunuh)',
+            13: 'HARANI 13 : Dalam fase pendek : adalah ketidakmampuan mendapatkan hasil yang maksimal dan optimal dari segala Usaha yang di Jalankan HARANI 13 : Dalam Fase Panjang : Akhir dari kehidupannya akn mengalami kematian yang di rekayasa,di mana Pelaku yg melakukan rekayasa tsb,tidak akan pernah terungkap (Contoh kasus : Munir dan Lady Diana)',
+        };
 
-            // Hitung per bagian nama (mode: perkata)
-            namaParts.forEach(part => {
-                const result = processNama(part, 'perkata');
-                output.push(renderSection(part, result));
-                result.angka.forEach(a => allAngka.add(a));
-            });
-            const gabunganTanpaSpasi = nama.replace(/ /g, '');
-            const gabunganResult = processNama(gabunganTanpaSpasi, 'gabungan');
+        const HARANI_TYPE = {
+            1: "positif",
+            2: "positif",
+            3: "positif",
+            4: "positif",
+            5: "negatif",
+            6: "positif",
+            7: "negatif",
+            8: "negatif",
+            9: "negatif",
+            11: "negatif",
+            13: "negatif"
+        };
+        const KONVERSI_HARANI = {
+            'A': 1,
+            'J': 1,
+            'S': 1,
+            'B': 2,
+            'K': 2,
+            'T': 2,
+            'C': 3,
+            'L': 3,
+            'U': 3,
+            'D': 4,
+            'M': 4,
+            'V': 4,
+            'E': 5,
+            'N': 5,
+            'W': 5,
+            'F': 6,
+            'O': 6,
+            'X': 6,
+            'G': 7,
+            'P': 7,
+            'Y': 7,
+            'H': 8,
+            'Q': 8,
+            'Z': 8,
+            'I': 9,
+            'R': 9
+        };
 
-            output.push(renderSection(` ${nama}`, gabunganResult));
-            gabunganResult.angka.forEach(a => allAngka.add(a));
+        const PYTHAGORAS_BASIC = {
+            'a': 1,
+            'j': 1,
+            's': 1,
+            'b': 2,
+            'k': 2,
+            't': 2,
+            'c': 3,
+            'l': 3,
+            'u': 3,
+            'd': 4,
+            'm': 4,
+            'v': 4,
+            'e': 5,
+            'n': 5,
+            'w': 5,
+            'f': 6,
+            'o': 6,
+            'x': 6,
+            'g': 7,
+            'p': 7,
+            'y': 7,
+            'h': 8,
+            'q': 8,
+            'z': 8,
+            'i': 9,
+            'r': 9
+        };
 
-            // Hitung hasil final
-            const angkaFinal = Array.from(allAngka).sort((a, b) => a - b);
+        const daftarMerah = ["1-4", "1-6", "1-7", "1-8", "1-9", "1-22", "1-33", "2-5", "2-6", "2-7", "2-8", "2-9", "3-3", "3-6", "3-7", "3-8", "3-9", "3-33", "4-1", "4-7", "4-8", "4-9", "5-2", "5-8", "5-11", "6-1", "6-3", "6-8", "6-9", "7-1", "7-2", "7-4", "7-11", "7-22", "8-1", "8-2", "8-3", "8-5", "8-11", "8-33", "9-1", "9-2", "9-3", "9-4", "9-11", "9-22", "9-33", "11-5", "11-7", "11-8", "11-9", "22-1", "22-7", "22-8", "22-9", "33-1", "33-3", "33-8", "33-9"];
+        const daftarKuning = ["1-2", "1-3", "1-11", "2-1", "2-3", "2-4", "2-11", "2-22", "3-1", "3-2", "3-4", "3-5", "3-11", "3-22", "4-2", "4-3", "4-5", "4-6", "4-11", "4-33", "5-3", "5-4", "5-6", "5-7", "5-9", "5-22", "5-33", "6-4", "6-5", "6-7", "6-11", "6-22", "7-3", "7-5", "7-6", "7-8", "7-9", "7-33", "8-4", "8-6", "8-7", "8-9", "8-22", "9-5", "9-6", "9-7", "9-8", "11-1", "11-2", "11-3", "11-4", "11-22", "22-2", "22-3", "22-5", "22-6", "22-33", "33-2", "33-4", "33-5", "33-7"];
 
-            // Filter angka yang relevan (hanya yang ada di ANGKA_POSITIF atau ANGKA_NEGATIF)
-            const angkaRelevan = angkaFinal.filter(a => ANGKA_POSITIF.has(a) || ANGKA_NEGATIF.has(a));
-
-            // Hitung jumlah angka positif dan negatif
-            const positif = angkaFinal.filter(a => ANGKA_POSITIF.has(a)).length;
-            const negatif = angkaFinal.filter(a => ANGKA_NEGATIF.has(a)).length;
-
-            // Hitung persentase berdasarkan angka yang relevan
-            const totalRelevant = positif + negatif;
-            const persen = totalRelevant === 0 ? 0 : Math.round((positif / totalRelevant) * 100);
-
-// Tampilkan hasil
-output.push(`
-    <div class="final-result">
-        <strong style="color: red;">${nama}</strong>
-        ${renderAngkaList(angkaFinal)}
-        <strong style="color: green;"> POSITIF : ${persen}%</strong>
-    </div>
-`);
-
-            document.getElementById('numerologi-result').innerHTML = output.join('');
+        function reduksiTabel(n) {
+            let num = n;
+            while (num > 9 && num !== 11 && num !== 22 && num !== 33) {
+                num = num.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+            }
+            return num;
         }
 
-        function processNama(nama, mode) {
+        function reduksiHarani(num) {
+            return num > 9 ? Math.floor(num/10) + (num % 10): num;
+        }
+
+        function processNamaOriginal(nama, mode) {
             let total = 0;
-            
-            // Hitung total nilai huruf
-            for(let i=0; i<nama.length; i++) {
-                if(nama[i] === 'H' && i+1 < nama.length) {
-                   
-                }
+
+            for (let i = 0; i < nama.length; i++) {
                 total += NILAI_HURUF[nama[i]] || 0;
             }
 
             let angkaTambahan = [];
-            let totalNama= total;
-            if (mode === 'perkata') {
-    // Perkata: DiKurangi 1000 sampai <1390
-    while (total > 1390) {
-        total -= 1000;  // Kurangi total 1000
-        if (total === 1260 || total === 1390 || total === 120 || total === 318 || total === 350 || total === 360 || total === 365 || total === 666) {
-        angkaTambahan.push(total);
-    }
-}
+            let totalNama = total;
 
+            if (mode === 'perkata') {
+                while (total > 1390) {
+                    total -= 1000;
+                    if (total === 1260 || total === 1390 || total === 120 || total === 318 || total === 350 || total === 360 || total === 365 || total === 666) {
+                        angkaTambahan.push(total);
+                    }
+                }
             } else if (mode === 'gabungan') {
-    // Gabungan: Kurangi 1000 sekali jika >1390
-    if (total > 1390) {
-    total -= 1000;
-    if (total === 1260 || total === 1390 || total === 120 || total === 318 || total === 350 || total === 360 || total === 365 || total === 666) {
-        angkaTambahan.push(total);
-    }
-}
+                if (total > 1390) {
+                    total -= 1000;
+                    if (total === 1260 || total === 1390 || total === 120 || total === 318 || total === 350 || total === 360 || total === 365 || total === 666) {
+                        angkaTambahan.push(total);
+                    }
+                }
             }
-                
-            // menyimpan total akhir setelah pemotongan pertama
-            totalNama= total;
-                
-            // Ekstraksi angka
+
+            totalNama = total;
+
             const angka = new Set();
             const strTotal = String(total);
 
-            // 1. Ribuan
-            const ribuan = Math.floor(total / 1000) * 1000;  // Ambil angka ribuan
+            const ribuan = Math.floor(total / 1000) * 1000;
             if (total >= 1000) {
-            angka.add(ribuan);  // Menambahkan angka ribuan ke dalam array
-            total -= ribuan;  // Mengurangi total dengan nilai ribuan
+                angka.add(ribuan);
+                total -= ribuan;
             }
-            // 2. Memproses ratusan
+
             if (total >= 100) {
-            if ([120, 318, 350, 360, ,365, 666].includes(total % 1000)) angka.add(total);
-            const ratusan = Math.floor(total / 100) * 100;
-            angka.add(ratusan);  // Menambahkan angka ratusan
-            total -= ratusan;  // Mengurangi total dengan angka ratusan
+                if ([120, 318, 350, 360, 365, 666].includes(total % 1000)) angka.add(total);
+                const ratusan = Math.floor(total / 100) * 100;
+                angka.add(ratusan);
+                total -= ratusan;
             }
-            // 3. Puluhan
+
             const puluhan = Math.floor((total % 100) / 10) * 10;
             if ([75, 77, 81].includes(total % 100)) angka.add(total);
-            if(puluhan !== 0 && ARTINYA[puluhan]) angka.add(puluhan);
+            if (puluhan !== 0 && ARTINYA[puluhan]) angka.add(puluhan);
 
-            // 4. Belasan (11-19)
             const belasan = parseInt(strTotal.slice(-2));
-            if(belasan >=10 && belasan <=50) angka.add(belasan);
+            if (belasan >= 10 && belasan <= 50) angka.add(belasan);
 
-            // 5. Satuan
             const satuan = total % 10;
-            if(satuan >=1 && satuan <=9) angka.add(satuan);
+            if (satuan >= 1 && satuan <= 9) angka.add(satuan);
 
-            // 6. Jumlah digit
-            const sumDigit = strTotal.split('').reduce((a,b) => a + parseInt(b), 0);
-            if(sumDigit > 0) {
+            const sumDigit = strTotal.split('').reduce((a, b) => a + parseInt(b), 0);
+            if (sumDigit > 0) {
                 angka.add(sumDigit);
-                if(sumDigit >=10) {
-                    const sumLagi = String(sumDigit).split('').reduce((a,b) => a + parseInt(b), 0);
+                if (sumDigit >= 10) {
+                    const sumLagi = String(sumDigit).split('').reduce((a, b) => a + parseInt(b), 0);
                     angka.add(sumLagi);
                 }
             }
 
-            // Memastikan hanya angka yang <= dibawah 1390 yang dimasukkan ke dalam set angka
             angkaTambahan.forEach(n => {
-            if (n <= 1390) {
-            angka.add(n);
-          }
-       });
-                
+                if (n <= 1390) {
+                    angka.add(n);
+                }
+            });
+
             return {
-            totalNama: totalNama,
-            total: total,
-            angka: Array.from(angka)
-            .filter(a => a <= 1390) // Memfilter angka yang lebih besar dari 1390
-            .sort((a, b) => a - b)
-          };
-        }
-        function renderAngkaList(angkaList) {
-    return angkaList.map(angka => `<div>Angka: ${angka}</div>`).join('');
-}
-
-// Fungsi render untuk menampilkan data
-function renderSection(nama, result) {
-    return `
-        <div class="section">
-            <strong style="color: red;">${nama}</strong> (Total: ${result.totalNama})<br>
-            ${renderAngkaList(result.angka)} <!-- Menampilkan list angka hasil ekstraksi -->
-            <span style="color: green;">POSITIF : ${hitungPersen(result.angka)}%</span>
-        </div>
-    `;
+                totalNama: totalNama,
+                total: total,
+                angka: Array.from(angka)
+                .filter(a => a <= 1390)
+                .sort((a, b) => a - b)
+            };
         }
 
-        function renderAngkaList(angka) {
+        function hitungPersenPythagoras(angka) {
+            const positif = angka.filter(a => ANGKA_POSITIF.has(a)).length;
+            const negatif = angka.filter(a => ANGKA_NEGATIF.has(a)).length;
+            const totalRelevant = positif + negatif;
+            return totalRelevant === 0 ? 0: Math.round((positif / totalRelevant) * 100);
+        }
+
+        function renderAngkaListPythagoras(angka) {
             return angka.map(a => `
                 <div class="angka-item">
-                    <yelow>(${a})</yelow> ${ARTINYA[a]}
+                <yelow>(${a})</yelow> ${ARTINYA[a] || 'Tidak ada arti'}
                 </div>
-            `).join('');
+                `).join('');
         }
 
-        function hitungPersen(angka) {
-       const positif = angka.filter(a => ANGKA_POSITIF.has(a)).length;
-       const negatif = angka.filter(a => ANGKA_NEGATIF.has(a)).length;
-       const totalRelevant = positif + negatif;
-       return totalRelevant === 0 ? 0 : Math.round((positif / totalRelevant) * 100);
-   }
+        // PERBAIKAN DI FUNGSI renderSectionPythagoras:
+        function renderSectionPythagoras(nama, result) {
+            const persen = hitungPersenPythagoras(result.angka);
+            return `
+            <div class="section">
+            <strong>${nama}</strong> (Total: ${result.totalNama})<br>
+            ${renderAngkaListPythagoras(result.angka)}
+            <span class="persen-hasil">POSITIF : ${persen}%</span>
+            </div>
+            `;
+        }
+
+        // PERBAIKAN DI OUTPUT RINGKASAN PYTHAGORAS:
+        document.getElementById('pythagoras-original-result').innerHTML =
+        outputPythagoras.join('') +
+        `<div class="dark">
+        <strong>RINGKASAN: ${namaInput}</strong><br>
+        ${renderAngkaListPythagoras(angkaFinalPythagoras)}<br>
+        <span class="persen-hasil">POSITIF TOTAL: ${persenPythagoras}%</span>
+        </div>`;
+
+        // PERBAIKAN DI OUTPUT TABEL KECOCOKAN:
+        document.getElementById('tabel-kecocokan-result').innerHTML =
+        `<div class="dark">
+        <strong>${namaInput}</strong><br>
+        ${renderAngkaListPythagoras(angkaFinalPythagoras)}<br>
+        <span class="persen-hasil">POSITIF ARTI NAMA : ${persenPythagoras}%</span>
+        ${infoTabel}
+        </div>`;
+
+        // PERBAIKAN DI OUTPUT FINAL SUMMARY (bagian yang paling bermasalah):
+        // PERBAIKAN DI FUNGSI hitungSemua() - BAGIAN FINAL SUMMARY:
+        document.getElementById('final-summary').innerHTML = `
+        <div style="text-align:center; font-size: 1rem;"> <!-- TAMBAHKIN INI -->
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin:20px 0;">
+        <div style="flex:1; min-width:140px; padding:15px; background:#ffffff; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.1);">
+        <div style="font-size:0.8rem; color:#666; margin-bottom:5px;">Pythagoras</div>
+        <div style="font-size:1.5rem; font-weight:bold; color:#2e7d32; margin:8px 0;">${persenPythagoras}%</div>
+        <div style="font-size:0.8rem; color:#666;">Positif</div>
+        </div>
+
+        <div style="flex:1; min-width:140px; padding:15px; background:#ffffff; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.1);">
+        <div style="font-size:0.8rem; color:#666; margin-bottom:5px;">Harani</div>
+        <div style="font-size:1.5rem; font-weight:bold; margin:8px 0;">${hasilHarani}</div>
+        <div style="font-size:0.8rem; ${tipeHarani === 'positif' ? 'color:#4caf50': tipeHarani === 'negatif' ? 'color:#f44336': 'color:#666'}">${tipeHarani.toUpperCase()}</div>
+        </div>
+
+        <div style="flex:1; min-width:140px; padding:15px; background:#ffffff; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.1);">
+        <div style="font-size:0.8rem; color:#666; margin-bottom:5px;">Kecocokan</div>
+        <div style="font-size:1.5rem; font-weight:bold; color:${warnaTabel || '#666'}; margin:8px 0;">${skorTabel}%</div>
+        <div style="font-size:0.8rem; color:#666;">${statusTabel || 'N/A'}</div>
+        </div>
+        </div>
+
+        <div style="padding:20px; background:#ffffff; border-radius:5px; margin:20px 0; box-shadow:0 0 10px rgba(0,0,0,0.1); border-top:5px solid ${warnaKeselarasan}">
+        <div style="font-size:0.9rem; color:#666; margin-bottom:10px;">KESELARASAN TOTAL</div>
+        <div style="font-size:2.5rem; font-weight:bold; color:${warnaKeselarasan}; margin:10px 0;">${totalKeselarasan}%</div>
+        <div style="margin-top:10px; padding:6px 20px; background:${warnaKeselarasan}; color:white; border-radius:20px; display:inline-block; font-weight:bold; font-size:0.9rem;">
+        ${totalKeselarasan >= 80 ? "SANGAT BAIK":
+        totalKeselarasan >= 60 ? "CUKUP BAIK":
+        totalKeselarasan >= 40 ? "PERLU PERHATIAN":
+        "PERLU EVALUASI"}
+        </div>
+        </div>
+
+        <div style="color:#666; font-size:0.8rem; margin-top:15px; padding-top:15px; border-top:1px solid #ddd;">
+        Analisis selesai: ${new Date().toLocaleString('id-ID')}
+        </div>
+        </div>
+        `;
+        function hitungSemua() {
+            const namaInput = document.getElementById('nama').value.toUpperCase().trim();
+            const tglInput = document.getElementById('birthDate').value;
+            if (!namaInput) return alert("Masukkan Nama!");
+
+            document.getElementById('hasil-section').style.display = 'block';
+
+            document.getElementById('pythagoras-original-result').innerHTML = '';
+            document.getElementById('harani-result').innerHTML = '';
+            document.getElementById('tabel-kecocokan-result').innerHTML = '';
+            document.getElementById('final-summary').innerHTML = '';
+
+            // A. ANALISIS PYTHAGORAS ORIGINAL
+            const namaParts = namaInput.split(' ');
+            let outputPythagoras = [];
+            let allAngkaPythagoras = new Set();
+
+            namaParts.forEach(part => {
+                const result = processNamaOriginal(part, 'perkata');
+                outputPythagoras.push(renderSectionPythagoras(part, result));
+                result.angka.forEach(a => allAngkaPythagoras.add(a));
+            });
+
+            const gabunganTanpaSpasi = namaInput.replace(/ /g, '');
+            const gabunganResult = processNamaOriginal(gabunganTanpaSpasi, 'gabungan');
+            outputPythagoras.push(renderSectionPythagoras(namaInput, gabunganResult));
+            gabunganResult.angka.forEach(a => allAngkaPythagoras.add(a));
+
+            const angkaFinalPythagoras = Array.from(allAngkaPythagoras).sort((a, b) => a - b);
+            const positifPythagoras = angkaFinalPythagoras.filter(a => ANGKA_POSITIF.has(a)).length;
+            const negatifPythagoras = angkaFinalPythagoras.filter(a => ANGKA_NEGATIF.has(a)).length;
+            const totalRelevantPythagoras = positifPythagoras + negatifPythagoras;
+            const persenPythagoras = totalRelevantPythagoras === 0 ? 0: Math.round((positifPythagoras / totalRelevantPythagoras) * 100);
+
+            document.getElementById('pythagoras-original-result').innerHTML =
+            outputPythagoras.join('') +
+            `<div class="dark">
+            <strong style="color: #ffffff;">RINGKASAN: ${namaInput}</strong><br>
+            ${renderAngkaListPythagoras(angkaFinalPythagoras)}<br>
+            <strong style="color: #4caf50;">POSITIF TOTAL: ${persenPythagoras}%</strong>
+            </div>`;
+
+            // B. HARANI SEGITIGA
+            const namaBersih = namaInput.replace(/[^A-Z]/g, '');
+            let nama9 = '';
+            for (let i = 0; i < 9; i++) {
+                nama9 += namaBersih[i % namaBersih.length];
+            }
+            let angkaAwal = [...nama9].map(c => KONVERSI_HARANI[c] || 0);
+
+            let current = [...angkaAwal];
+            let putaran = [];
+            for (let i = 1; i <= 8; i++) {
+                let temp = [];
+                for (let j = 0; j < current.length - 1; j++) {
+                    let sum = current[j] + current[j+1];
+                    temp.push((i === 8 && (sum === 11 || sum === 13)) ? sum: reduksiHarani(sum));
+                }
+                putaran.push([...temp]);
+                current = temp;
+            }
+
+            const hasilHarani = current[0];
+            const tipeHarani = HARANI_TYPE[hasilHarani] || "neutral";
+
+            const tri = document.getElementById('triangle');
+            tri.innerHTML = '';
+            const allRows = [angkaAwal,
+                ...putaran];
+            allRows.forEach((r, i) => {
+                const rowDiv = document.createElement('div');
+                rowDiv.className = 'triangle-row';
+                r.forEach((v, j) => {
+                    const node = document.createElement('div');
+                    node.className = 'triangle-node' + (i === allRows.length - 1 ? ' result': '');
+                    node.textContent = v;
+                    rowDiv.appendChild(node);
+                });
+                tri.appendChild(rowDiv);
+            });
+
+            document.getElementById('harani-result').innerHTML = `
+            <div class="harani-box bg-${tipeHarani}">
+            <strong>HASIL AKHIR: HARANI ${hasilHarani} (${tipeHarani.toUpperCase()})</strong><br><br>
+            ${HARANI_TEXT[hasilHarani] || "Interpretasi belum tersedia."}
+            </div>
+            `;
+
+            // C. TABEL KECOCOKAN
+            let infoTabel = "";
+            let skorTabel = 0;
+            let statusTabel = "";
+            let warnaTabel = "";
+
+            if (tglInput) {
+                let totalBasic = 0;
+                namaInput.toLowerCase().replace(/ /g, '').split('').forEach(c => {
+                    totalBasic += PYTHAGORAS_BASIC[c] || 0;
+                });
+
+                const angkaNama = reduksiTabel(totalBasic);
+                const d = new Date(tglInput);
+                const angkaTgl = reduksiTabel(
+                    reduksiTabel(d.getFullYear()) +
+                    reduksiTabel(d.getMonth() + 1) +
+                    reduksiTabel(d.getDate())
+                );
+
+                const key = `${angkaNama}-${angkaTgl}`;
+
+                if (daftarMerah.includes(key)) {
+                    statusTabel = "TIDAK COCOK (0%)";
+                    warnaTabel = "#f44336";
+                    skorTabel = 0;
+                } else if (daftarKuning.includes(key)) {
+                    statusTabel = "COCOK 50%";
+                    warnaTabel = "#ff9800";
+                    skorTabel = 50;
+                } else {
+                    statusTabel = "COCOK 100%";
+                    warnaTabel = "#4caf50";
+                    skorTabel = 100;
+                }
+
+                infoTabel = `
+                <div class="tab-res">
+                <strong>Analisis Kecocokan Tabel:</strong><br>
+                Angka Nama: <b>${angkaNama}</b><br>
+                Angka Tanggal: <b>${angkaTgl}</b><br>
+                Kombinasi: <b>${key}</b><br><br>
+                Status: <b style="color:${warnaTabel}">${statusTabel}</b>
+                </div>
+                `;
+            } else {
+                infoTabel = `<div class="tab-res"><i>Masukkan tanggal lahir untuk analisis kecocokan tabel</i></div>`;
+            }
+
+            document.getElementById('tabel-kecocokan-result').innerHTML =
+            `<div class="dark">
+            <strong style="color: #ffffff;">${namaInput}</strong><br>
+            ${renderAngkaListPythagoras(angkaFinalPythagoras)}<br>
+            <strong style="color: #4caf50;">POSITIF ARTI NAMA : ${persenPythagoras}%</strong>
+            ${infoTabel}
+            </div>`;
+
+            // D. KESIMPULAN FINAL
+            let bobotHarani = 0;
+            if (tipeHarani === "positif") {
+                bobotHarani = 100;
+            } else if (tipeHarani === "negatif") {
+                bobotHarani = 0;
+            } else {
+                bobotHarani = 50; // netral (opsional)
+            }
+            const totalKeselarasan = Math.round((persenPythagoras + skorTabel + bobotHarani) / 3);
+
+            let kesimpulanHarani = "";
+            if (tipeHarani === "positif") {
+                kesimpulanHarani = `<span class="positif">HARANI ${hasilHarani} (POSITIF)</span>`;
+            } else if (tipeHarani === "negatif") {
+                kesimpulanHarani = `<span class="negatif">HARANI ${hasilHarani} (NEGATIF - Perlu perhatian khusus)</span>`;
+            } else {
+                kesimpulanHarani = `<span class="neutral">HARANI ${hasilHarani} (NEUTRAL)</span>`;
+            }
+
+            let warnaKeselarasan = "#666";
+            if (totalKeselarasan >= 80) warnaKeselarasan = "#4caf50";
+            else if (totalKeselarasan >= 60) warnaKeselarasan = "#ff9800";
+            else warnaKeselarasan = "#f44336";
+
+            document.getElementById('final-summary').innerHTML = `
+            <div style="text-align:center;">
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin:20px 0;">
+            <div style="flex:1; min-width:150px; padding:15px; background:#ffffff; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.1);">
+            <div style="font-size:12px; color:#666;">Pythagoras</div>
+            <div style="font-size:24px; font-weight:bold; color:#2e7d32;">${persenPythagoras}%</div>
+            <div style="font-size:12px; color:#666;">Positif</div>
+            </div>
+
+            <div style="flex:1; min-width:150px; padding:15px; background:#ffffff; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.1);">
+            <div style="font-size:12px; color:#666;">Harani</div>
+            <div style="font-size:24px; font-weight:bold;">${hasilHarani}</div>
+            <div style="font-size:12px; ${tipeHarani === 'positif' ? 'color:#4caf50': tipeHarani === 'negatif' ? 'color:#f44336': 'color:#666'}">${tipeHarani.toUpperCase()}</div>
+            </div>
+
+            <div style="flex:1; min-width:150px; padding:15px; background:#ffffff; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.1);">
+            <div style="font-size:12px; color:#666;">Kecocokan</div>
+            <div style="font-size:24px; font-weight:bold; color:${warnaTabel || '#666'}">${skorTabel}%</div>
+            <div style="font-size:12px; color:#666;">${statusTabel || 'N/A'}</div>
+            </div>
+            </div>
+
+            <div style="padding:25px; background:#ffffff; border-radius:5px; margin:20px 0; box-shadow:0 0 10px rgba(0,0,0,0.1); border-top:5px solid ${warnaKeselarasan}">
+            <div style="font-size:14px; color:#666; margin-bottom:10px;">KESELARASAN TOTAL</div>
+            <div style="font-size:48px; font-weight:bold; color:${warnaKeselarasan}">${totalKeselarasan}%</div>
+            <div style="margin-top:10px; padding:8px 20px; background:${warnaKeselarasan}; color:white; border-radius:20px; display:inline-block; font-weight:bold;">
+            ${totalKeselarasan >= 80 ? "SANGAT BAIK":
+            totalKeselarasan >= 60 ? "CUKUP BAIK":
+            totalKeselarasan >= 40 ? "PERLU PERHATIAN":
+            "PERLU EVALUASI"}
+            </div>
+            </div>
+
+            <div style="color:#666; font-size:13px; margin-top:15px; padding-top:15px; border-top:1px solid #ddd;">
+            Analisis selesai: ${new Date().toLocaleString('id-ID')}
+            </div>
+            </div>
+            `;
+
+            // Scroll ke hasil
+            document.getElementById('hasil-section').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     </script>
 </body>
 </html>
