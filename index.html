@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Ramalan Arti Nama</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            width: 85%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: green;
+        }
+        .description {
+            text-align: justify;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .input-section {
+            margin: 20px 0;
+            text-align: center;
+            color: green;
+        }
+        .input-section label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .input-section input[type="text"] {
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            max-lenght: 50px;
+        }
+        .input-section button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            align: center;
+        }
+        .input-section button:hover {
+            background-color: darkgreen;
+            button-align: center;
+        }
+        .name-output {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+        .name-output span {
+            color: red;
+        }
+        .tips {
+            text-align: justify;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .tips .note {
+            font-style: italic;
+            color: #777;
+        }
+        .result-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+            hitungpersen: green;
+        }
+        .result-section h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .result-section .angka-item {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .final-result {background: #e3f2fd; padding: 20px; margin-top: 30px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 1. Judul -->
+        <h1>ARTI NAMA</h1>
+
+        <!-- 2. Penjelasan -->
+        <div class="description">
+            Arti nama yang baik akan memberikan pengaruh yang baik. Bahkan oleh Nabi kita dianjurkan untuk memberikan nama-nama yang baik. 
+            Nama yang baik akan memberikan pengaruh yang baik untuk kehidupan kita. Arti Nama ini menggunakan metode pythagoras 
+            dan sifatnya sebagai rujukan karena segala ketentuan berpulang pada Tuhan. Aplikasi ini juga bisa digunakan sebagai rujukan 
+            membuat nama perusahaan, merek, nama domain, dll.
+        </div>
+
+        <!-- 3. Masukan Nama -->
+        <div class="input-section">
+            <label for="name">Masukkan Nama Anda:</label>
+            <input type="text" id="name" placeholder="Contoh: Dwi Yulianto Ghazali">
+            <!-- 4 & 5. Tombol proses tepat di tengah bawah -->
+        </div>
+        <div class="input-section button">
+            <button onclick="hitungNumerologi()">Proses</button>
+        </div>
+        
+        <!-- 6. Hasil proses -->
+        <div id="result" class="name-output"></div>
+
+        <!-- 7. Hasil Numerologi -->
+        <div id="numerologi-result" class="result-section"></div>
+
+        <!-- 8. Penjelasan -->
+        <div class="tips">
+            <h2>Tips Merangkai Arti Nama yang Positif:</h2>
+            <ul>
+                <li>Misalkan Anda memilih nama: "arifin suwarno".</li>
+                <li>Lihat arti nama "arifin suwarno". Jika arti nama tersebut positif semua maka lanjutkan langkah ke 2 berikut ini.</li>
+                <li>Lihat nama "arifin", jika artinya positif semua lanjutkan ke langkah ke 3.</li>
+                <li>Lihat nama "suwarno", jika artinya positif semua maka Anda bisa pakai nama tersebut.</li>
+            </ul>
+            <p class="note">
+                Catatan:
+                <ul>
+                    <li>Tidak mudah mendapatkan arti nama yang 100% positif. Namun paling tidak, arti nama Anda didominasi oleh arti yang positif atau usahakan memiliki kadar POSITIF minimal 65%.</li>
+                    <li>Jika nama Anda didominasi oleh arti yang kurang baik maka Anda mungkin bisa merubah nama panggilannya saja dibanding mengganti keseluruhan nama.</li>
+                    <li>Arti yang kurang baik juga bisa dihindari agar tidak menjadi kenyataan dengan melakukan banyak amal baik/sedekah kepada kaum dhuafa.</li>
+                    <li>Pada sebelah kiri arti nama terdapat angka yang didapat dari metode pythagoras ini. Abaikan saja jika Anda bingung karena nilai ini merupakan bukti bahwa tiap huruf pada nama dihitung secara detail.</li>
+                    <li>Jika nama Anda sudah memiliki arti nama yang positif maka langkah selanjutnya adalah memeriksa apakah nama tersebut sudah sinkron dengan tanggal kelahiran Anda atau belum. Silahkan klik menu.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const ARTINYA = {
+            1: 'Ambisius/gemar/bernafsu mengejar kehormatan',
+            2: 'Kerusakan, kebinasaan dan kematian',
+            3: 'Spiritual, mistik, kepercayaan pada hal gaib',
+            4: 'Keteguhan, kebijaksanaan, pengaruh dan kekuasaan',
+            5: 'Kebahagiaan, kehormatan dan pernikahan',
+            6: 'Pekerjaan yang sempurna',
+            7: 'Jalan penghidupan yang tentram, merdeka, bahagia dan sempurna',
+            8: 'Perasaan pada keadilan',
+            9: 'Kesedihan dan kekurang-sempurnaan',
+            10: 'Berhasil dengan baik, cerdas dan beruntung',
+            11: 'Sakit, Cacat, keributan, hukuman dan lupa pada kewajiban',
+            12: 'Alamat baik',
+            13: 'Kurang beribadah',
+            14: 'Pengorbanan',
+            15: 'Beribadah, baik dan sopan',
+            16: 'Kecintaan dan kebahagiaan',
+            17: 'Kecelakaan dan tabiat pelupa',
+            18: 'Kekejaman',
+            19: 'Kebodohan',
+            20: 'Bengis, ketus dan kedukaan',
+            21: 'Kebijaksanaan, penciptaan dan kegaiban',
+            22: 'Hukuman, pembalasan Tuhan, suatu hukuman Melakukan perbuatan yang melangar norma',
+            23: 'Kurang memiliki pengetahuan agama',
+            24: ' Suatu perjalanan melancong',
+            25: 'Kecerdasan pemikiran dan sebuah kelahiran',
+            26: 'Tanda alamat baik dan berfaedah',
+            27: 'Gagah dan tabah',
+            28: 'Semboyan dari sifat kecintaan',
+            29: 'Surat',
+            30: 'Kemasyhuran dan pernikahan',
+            31: 'Gemar akan Kemasyhuran dan kebajikan',
+            32: 'Pernikahan',
+            33: 'Cara teliti yang melewati batas',
+            34: 'Sengsara, jiwa yang labil',
+            35: 'Sehat dan rukun',
+            36: 'Jenius dan berpengetahuan luas',
+            37: 'Kehidupan rumah tangga yang tentram',
+            38: 'Cacat, pelit, dan jelus',
+            39: 'Gemar pujian',
+            40: 'Pesta, kegembiraan dan pernikahan',
+            41: 'Kenistaan',
+            42: 'Umur pendek dan tidak bahagia',
+            43: 'Upacara, agama dan pendeta',
+            44: 'Pengaruh, kekuasaan dan hasil baik',
+            45: 'Hidup susah meski sudah berusaha',
+            46: 'Kemakmuran',
+            47: 'Hidup lama dan bahagia',
+            48: 'Pengadilan, hakim dan putusan pengadilan',
+            49: 'Rakus dan pamer kekayaan',
+            50: 'Pengampunan dan kemerdekaan',
+            60: 'Berpisah dari pasangan hidup',
+            70: 'Bersemangat, berpengetahuan dan keindahan',
+            75: 'Menekuni bidang duniawi',
+            77: 'Pengampunan penyesalan bertobat',
+            80: 'Kesembuhan',
+            81: 'Seniman',
+            90: 'Kesesatan dan kedukaan',
+            100: 'Berkah Tuhan',
+            120: 'Semangat cinta negeri dan kebagusan',
+            200: 'Sifat ragu-ragu',
+            215: 'Kesengsaraan',
+            300: 'Kesentausaan dan suka ilmu',
+            318: 'Titah Utusan Yang Maha Agung',
+            350: 'Pengharapan dan keadilan',
+            360: 'Rumah rombongan dan berkawan',
+            365: 'Suka pada ilmu bintang',
+            400: 'Perjalanan yang melelahkan',
+            500: 'Suci',
+            600: 'Kesempurnaan dan kebaikan',
+            666: 'Manusia jahat dan permusuhan',
+            700: 'Kekuatan',
+            800: 'Keangkeran dan pengaruh kekuasaan',
+            900: 'Peperangan, pertempuran dan pergulatan, konflik batin',
+            1000: 'Sifat pengasih dan penyayang',
+            1260: 'Gangguan (pengangguran)',
+            1390: 'Pengejaran dan pendakwaan'
+        };
+
+        const ANGKA_POSITIF = new Set([1,3,4,5,6,7,8,10,12,15,16,21,25,26,27,28,30,35,36,37,40,43,44,46,47,50,70,75,77,80,81,100,120,300,318,350,500,600,700,800,1000]);
+          const ANGKA_NEGATIF = new Set([2,9,11,13,14,17,18,19,20,23,34,38,41,42,45,49,60,90,200,215,400,666,900,1260,390]);
+        
+        const NILAI_HURUF = {
+            'A':1, 'B':2, 'C':3, 'D':4, 'E':5, 'F':6, 'G':7, 'H':8, 'I':9,
+            'J':600, 'K':10, 'L':20, 'M':30, 'N':40, 'O':50, 'P':60, 'Q':70,
+            'R':80, 'S':90, 'T':100, 'U':200, 'V':700, 'W':1400, 'X':300,
+            'Y':400, 'Z':500
+        };
+
+        function hitungNumerologi() {
+            const nama = document.getElementById('name').value.toUpperCase().trim();
+            if (!nama) return alert("Masukkan nama!");
+            
+            const namaParts = nama.split(' ');
+            let output = [];
+            let allAngka = new Set();
+
+            // Hitung per bagian nama (mode: perkata)
+            namaParts.forEach(part => {
+                const result = processNama(part, 'perkata');
+                output.push(renderSection(part, result));
+                result.angka.forEach(a => allAngka.add(a));
+            });
+            const gabunganTanpaSpasi = nama.replace(/ /g, '');
+            const gabunganResult = processNama(gabunganTanpaSpasi, 'gabungan');
+
+            output.push(renderSection(` ${nama}`, gabunganResult));
+            gabunganResult.angka.forEach(a => allAngka.add(a));
+
+            // Hitung hasil final
+            const angkaFinal = Array.from(allAngka).sort((a, b) => a - b);
+
+            // Filter angka yang relevan (hanya yang ada di ANGKA_POSITIF atau ANGKA_NEGATIF)
+            const angkaRelevan = angkaFinal.filter(a => ANGKA_POSITIF.has(a) || ANGKA_NEGATIF.has(a));
+
+            // Hitung jumlah angka positif dan negatif
+            const positif = angkaFinal.filter(a => ANGKA_POSITIF.has(a)).length;
+            const negatif = angkaFinal.filter(a => ANGKA_NEGATIF.has(a)).length;
+
+            // Hitung persentase berdasarkan angka yang relevan
+            const totalRelevant = positif + negatif;
+            const persen = totalRelevant === 0 ? 0 : Math.round((positif / totalRelevant) * 100);
+
+// Tampilkan hasil
+output.push(`
+    <div class="final-result">
+        <strong style="color: red;">${nama}</strong>
+        ${renderAngkaList(angkaFinal)}
+        <strong style="color: green;"> POSITIF : ${persen}%</strong>
+    </div>
+`);
+
+            document.getElementById('numerologi-result').innerHTML = output.join('');
+        }
+
+        function processNama(nama, mode) {
+            let total = 0;
+            
+            // Hitung total nilai huruf
+            for(let i=0; i<nama.length; i++) {
+                if(nama[i] === 'H' && i+1 < nama.length) {
+                   
+                }
+                total += NILAI_HURUF[nama[i]] || 0;
+            }
+
+            let angkaTambahan = [];
+            let totalNama= total;
+            if (mode === 'perkata') {
+    // Perkata: DiKurangi 1000 sampai <1390
+    while (total > 1390) {
+        total -= 1000;  // Kurangi total 1000
+        if (total === 1260 || total === 1390 || total === 120 || total === 318 || total === 350 || total === 360 || total === 365 || total === 666) {
+        angkaTambahan.push(total);
+    }
+}
+
+            } else if (mode === 'gabungan') {
+    // Gabungan: Kurangi 1000 sekali jika >1390
+    if (total > 1390) {
+    total -= 1000;
+    if (total === 1260 || total === 1390 || total === 120 || total === 318 || total === 350 || total === 360 || total === 365 || total === 666) {
+        angkaTambahan.push(total);
+    }
+}
+            }
+                
+            // menyimpan total akhir setelah pemotongan pertama
+            totalNama= total;
+                
+            // Ekstraksi angka
+            const angka = new Set();
+            const strTotal = String(total);
+
+            // 1. Ribuan
+            const ribuan = Math.floor(total / 1000) * 1000;  // Ambil angka ribuan
+            if (total >= 1000) {
+            angka.add(ribuan);  // Menambahkan angka ribuan ke dalam array
+            total -= ribuan;  // Mengurangi total dengan nilai ribuan
+            }
+            // 2. Memproses ratusan
+            if (total >= 100) {
+            if ([120, 318, 350, 360, ,365, 666].includes(total % 1000)) angka.add(total);
+            const ratusan = Math.floor(total / 100) * 100;
+            angka.add(ratusan);  // Menambahkan angka ratusan
+            total -= ratusan;  // Mengurangi total dengan angka ratusan
+            }
+            // 3. Puluhan
+            const puluhan = Math.floor((total % 100) / 10) * 10;
+            if ([75, 77, 81].includes(total % 100)) angka.add(total);
+            if(puluhan !== 0 && ARTINYA[puluhan]) angka.add(puluhan);
+
+            // 4. Belasan (11-19)
+            const belasan = parseInt(strTotal.slice(-2));
+            if(belasan >=10 && belasan <=50) angka.add(belasan);
+
+            // 5. Satuan
+            const satuan = total % 10;
+            if(satuan >=1 && satuan <=9) angka.add(satuan);
+
+            // 6. Jumlah digit
+            const sumDigit = strTotal.split('').reduce((a,b) => a + parseInt(b), 0);
+            if(sumDigit > 0) {
+                angka.add(sumDigit);
+                if(sumDigit >=10) {
+                    const sumLagi = String(sumDigit).split('').reduce((a,b) => a + parseInt(b), 0);
+                    angka.add(sumLagi);
+                }
+            }
+
+            // Memastikan hanya angka yang <= dibawah 1390 yang dimasukkan ke dalam set angka
+            angkaTambahan.forEach(n => {
+            if (n <= 1390) {
+            angka.add(n);
+          }
+       });
+                
+            return {
+            totalNama: totalNama,
+            total: total,
+            angka: Array.from(angka)
+            .filter(a => a <= 1390) // Memfilter angka yang lebih besar dari 1390
+            .sort((a, b) => a - b)
+          };
+        }
+        function renderAngkaList(angkaList) {
+    return angkaList.map(angka => `<div>Angka: ${angka}</div>`).join('');
+}
+
+// Fungsi render untuk menampilkan data
+function renderSection(nama, result) {
+    return `
+        <div class="section">
+            <strong style="color: red;">${nama}</strong> (Total: ${result.totalNama})<br>
+            ${renderAngkaList(result.angka)} <!-- Menampilkan list angka hasil ekstraksi -->
+            <span style="color: green;">POSITIF : ${hitungPersen(result.angka)}%</span>
+        </div>
+    `;
+        }
+
+        function renderAngkaList(angka) {
+            return angka.map(a => `
+                <div class="angka-item">
+                    <yelow>(${a})</yelow> ${ARTINYA[a]}
+                </div>
+            `).join('');
+        }
+
+        function hitungPersen(angka) {
+       const positif = angka.filter(a => ANGKA_POSITIF.has(a)).length;
+       const negatif = angka.filter(a => ANGKA_NEGATIF.has(a)).length;
+       const totalRelevant = positif + negatif;
+       return totalRelevant === 0 ? 0 : Math.round((positif / totalRelevant) * 100);
+   }
+    </script>
+</body>
+</html>
